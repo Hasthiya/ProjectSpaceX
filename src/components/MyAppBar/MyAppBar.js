@@ -8,7 +8,7 @@ export default class MyAppBar extends Component {
   render() {
     return (
       <div >
-        <AppBar position="static">
+        <AppBar className='myAppBarBackground' position="static">
           <Toolbar>
             
           </Toolbar>
