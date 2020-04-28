@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: bodyFont !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: bodyFont;
+}
+
+.remove-outline {
+  outline: none !important;
+}
+
+@font-face {
+  font-family: bodyFont;
+  src: url(../../assets/fonts/RobotoCondensed-Regular.ttf);
+}
+
+

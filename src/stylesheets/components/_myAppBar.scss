@@ -1,0 +1,36 @@
+.myAppBarBackground {
+  background: white !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.myAppBarWrapper{
+  padding-bottom: 68px;
+}
+
+.myAppBarHeader {
+  font-family: myAppBarHeader;
+  font-size: 30px;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 211, 25, 1) 0%,
+    rgba(255, 144, 16, 1) 29%,
+    rgba(255, 41, 112, 1) 65%,
+    rgba(140, 30, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.myAppBarButton{
+  font-family: bodyFont;
+}
+
+@font-face {
+  font-family: myAppBarHeader;
+  src: url(../../assets/fonts/get_schwifty.ttf);
+}
+
+.search {
+  position: "relative";
+}
