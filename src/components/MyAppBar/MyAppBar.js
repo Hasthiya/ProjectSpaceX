@@ -9,8 +9,10 @@ export default class MyAppBar extends Component {
     return (
       <div >
         <AppBar className='myAppBarBackground' position="static">
-          <Toolbar>
-            
+          <Toolbar className='toolBar'>
+            <h4 className="titleText1">Space</h4>
+            <h4 className="titleText2">X</h4>
+            <h4 className="titleText3">Info</h4>
           </Toolbar>
         </AppBar>
       </div>

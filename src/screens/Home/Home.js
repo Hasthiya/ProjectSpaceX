@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Home extends Component {
     render() {
         return (
-            <div>
+            <div className="homeBackground">
                 <h1>Space X info center</h1>
             </div>
         )
