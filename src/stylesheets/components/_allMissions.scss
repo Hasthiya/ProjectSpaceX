@@ -1,5 +1,7 @@
-.titleRowBackground{
-    margin: 10px;
+.titleRowBackground {
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-weight: bold;
 }
 
@@ -10,28 +12,54 @@
 
 .titleBackgroundDisabled {
     vertical-align: middle;
-    color: #C2C2C2;
+    color: #c2c2c2;
 }
 
-.subTitleBackground{
-    background-color: #F3F3F3;
-    color: #C2C2C2;
-    padding: 10px;
+.subTitleBackground {
+    border-top: 1px solid #e9e9e9;
+    background-color: #f3f3f3;
+    color: #c2c2c2;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.subtitleText{
+.subtitleText {
     vertical-align: middle;
 }
 
-.allMissionsBodyContainer{
-    border: 1px solid #E9E9E9;
+.subtitleTextDescription {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.allMissionsBodyContainer {
+    border: 1px solid #e9e9e9;
     border-radius: 10px;
 }
 
-.allMissionsBackground{
+.allMissionsBackground {
     margin: 10px;
 }
 
-.contentTextBackground{
+.contentTextBackground {
+    border-top: 1px solid #e9e9e9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.expandedMissionBackground{
+    z-index: 5;
+    background-color: white;
+    height: 500px;
+    width: 100%;
     padding: 10px;
+    overflow: auto;
 }

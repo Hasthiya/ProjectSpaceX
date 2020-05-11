@@ -36,7 +36,7 @@ export function fetchMissions() {
     dispatch(getMissions())
 
     try {
-      const response = await fetch('https://api.spacex.land/rest/missions')
+      const response = await fetch('https://api.spacexdata.com/v3/missions')
       const data = await response.json()
 
       dispatch(getMissionsSuccess(data))
