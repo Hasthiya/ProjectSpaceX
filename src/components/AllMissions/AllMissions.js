@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMissions, missionsSelector } from '../../store/slices/missions';
 
+import Mission from '../Mission/Mission'
+
 function AllMissions() {
 
     const [detailsVisibility, setDetailsVisibility] = useState(false);
@@ -29,7 +31,20 @@ function AllMissions() {
         } else {
             return null
         }
+    }
 
+    const renderMissionsHeader = () => {
+        if(!detailsVisibility){
+            return(
+                <div className="d-flex subTitleBackground">
+                        <div className="col-3 subtitleText">Mission</div>
+                        <div className="col-3 subtitleText">ID</div>
+                        <div className="col-6 subtitleText">Description</div>
+                    </div>
+            )
+        } else {
+            return null
+        }
     }
 
     const renderMissionTitle = () => {
@@ -44,41 +59,31 @@ function AllMissions() {
         }
     }
 
-    function MissionDetails(props, { children }) {
+    const renderCloseButton = () => {
         if (detailsVisibility) {
             return (
-                <Fragment>
-                    <div className="expandedMissionBackground">
-                        <h5>Description</h5>
-                        <div>{props.mission.description}</div>
-
-                        <div className="d-flex">
-                            <div className="col-6">
-                                <h5>Manufacturer/s</h5>
-                                <div>
-                                    {props.mission.manufacturers.map(manufacturer =>
-                                        <div>
-                                            {manufacturer}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <h5>Payload/s</h5>
-                                <div>
-                                    {props.mission.payload_ids.map(payload_id =>
-                                        <div>
-                                            {payload_id}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Fragment>
+                <div className="col-6 closeButtonBackground">
+                    <div className="d-flex justify-content-end" onClick={() => setDetailsVisibility(!detailsVisibility)}>X</div>
+                </div>
             )
         } else {
             return null
+        }
+    }
+
+    const renderTitleRowStyles = () => {
+        if(!detailsVisibility){
+            return "d-flex titleRowBackground"
+        } else {
+            return "d-flex titleRowBackgroundActive"
+        }
+    }
+
+    const renderTitleBackgroundStyles = () => {
+        if(!detailsVisibility){
+            return "col-6 titleBackground"
+        } else {
+            return "col-6 titleBackgroundActive"
         }
     }
 
@@ -87,22 +92,19 @@ function AllMissions() {
             <div className="allMissionsBackground">
                 <div><h5>Missions</h5></div>
                 <div className="allMissionsBodyContainer">
-                    <div className="d-flex titleRowBackground">
-                        <div className="col-6 titleBackground">{renderMissionTitle()}</div>
+                    <div className={renderTitleRowStyles()}>
+                        <div className={renderTitleBackgroundStyles()}>{renderMissionTitle()}</div>
+                        {renderCloseButton()}
                     </div>
-                    <MissionDetails mission={selectedMission}></MissionDetails>
-                    <div className="d-flex subTitleBackground">
-                        <div className="col-3 subtitleText">Mission</div>
-                        <div className="col-3 subtitleText">ID</div>
-                        <div className="col-6 subtitleText">Description</div>
-                    </div>
-                    {renderMissions()}
+                    <div className="missionsBodyWrapper">
+                        <Mission mission={selectedMission} visibility={detailsVisibility} />
+                        {renderMissionsHeader()}
+                        {renderMissions()}
+                    </div>                   
                 </div>
             </div>
         </Fragment>
     )
 }
-
-
 
 export default AllMissions;
