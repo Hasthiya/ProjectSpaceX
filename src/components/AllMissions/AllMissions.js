@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMissions, missionsSelector } from '../../store/slices/missions';
+import { ArrowBack } from "@material-ui/icons";
 
 import Mission from '../Mission/Mission'
 
@@ -22,10 +23,12 @@ function AllMissions() {
         if (!detailsVisibility) {
             return (
                 missions.missions.map(mission =>
-                    <div key={mission.mission_id} className="d-flex contentTextBackground" onClick={() => { setDetailsVisibility(!detailsVisibility); setSelectedMission(mission) }}>
-                        <div className="col-3 ellipsis subtitleText">{mission.mission_name}</div>
-                        <div className="col-3 ellipsis subtitleText">{mission.mission_id}</div>
-                        <div className="col-6 ellipsis subtitleText">{mission.description}</div>
+                    <div key={mission.mission_id} className="contentRowBackground">
+                        <div className="d-flex contentTextBackground" onClick={() => { setDetailsVisibility(!detailsVisibility); setSelectedMission(mission) }}>
+                            <div className="col-3 ellipsis subtitleText">{mission.mission_name}</div>
+                            <div className="col-3 ellipsis subtitleText">{mission.mission_id}</div>
+                            <div className="col-6 ellipsis subtitleText">{mission.description}</div>
+                        </div>
                     </div>
                 ))
         } else {
@@ -34,13 +37,13 @@ function AllMissions() {
     }
 
     const renderMissionsHeader = () => {
-        if(!detailsVisibility){
-            return(
+        if (!detailsVisibility) {
+            return (
                 <div className="d-flex subTitleBackground">
-                        <div className="col-3 subtitleText">Mission</div>
-                        <div className="col-3 subtitleText">ID</div>
-                        <div className="col-6 subtitleText">Description</div>
-                    </div>
+                    <div className="col-3 subtitleText">Mission</div>
+                    <div className="col-3 subtitleText">ID</div>
+                    <div className="col-6 subtitleText">Description</div>
+                </div>
             )
         } else {
             return null
@@ -63,7 +66,7 @@ function AllMissions() {
         if (detailsVisibility) {
             return (
                 <div className="col-6 closeButtonBackground">
-                    <div className="d-flex justify-content-end" onClick={() => setDetailsVisibility(!detailsVisibility)}>X</div>
+                    <div className="d-flex justify-content-end" onClick={() => setDetailsVisibility(!detailsVisibility)}><div className="closeButton"> <ArrowBack fontSize="small"/> </div></div>
                 </div>
             )
         } else {
@@ -72,7 +75,7 @@ function AllMissions() {
     }
 
     const renderTitleRowStyles = () => {
-        if(!detailsVisibility){
+        if (!detailsVisibility) {
             return "d-flex titleRowBackground"
         } else {
             return "d-flex titleRowBackgroundActive"
@@ -80,10 +83,20 @@ function AllMissions() {
     }
 
     const renderTitleBackgroundStyles = () => {
-        if(!detailsVisibility){
+        if (!detailsVisibility) {
             return "col-6 titleBackground"
         } else {
             return "col-6 titleBackgroundActive"
+        }
+    }
+
+    const renderMissionDetails = () => {
+        if(detailsVisibility){
+            return(
+                <Mission mission={selectedMission} />
+            )
+        } else {
+            return null
         }
     }
 
@@ -97,10 +110,12 @@ function AllMissions() {
                         {renderCloseButton()}
                     </div>
                     <div className="missionsBodyWrapper">
-                        <Mission mission={selectedMission} visibility={detailsVisibility} />
-                        {renderMissionsHeader()}
-                        {renderMissions()}
-                    </div>                   
+                        <div className="missionsBodyScroll">
+                            {renderMissionDetails()}
+                            {renderMissionsHeader()}
+                            {renderMissions()}
+                        </div>
+                    </div>
                 </div>
             </div>
         </Fragment>

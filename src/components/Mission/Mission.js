@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 
 export default function Mission(props) {
-    if (props.visibility) {
         return (
             <Fragment>
                 <div className="expandedMissionBackground">
@@ -33,7 +32,4 @@ export default function Mission(props) {
                 </div>
             </Fragment>
         )
-    } else {
-        return null
-    }
 }

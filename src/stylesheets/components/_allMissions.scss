@@ -29,8 +29,11 @@
 .closeButtonBackground {
     vertical-align: middle;
     justify-content: end;
-    color: #912edc;
+    color: white;
     float: right;
+}
+.closeButton{    
+    cursor: pointer;
 }
 
 .titleBackgroundDisabled {
@@ -41,7 +44,7 @@
 .subTitleBackground {
     border-top: 1px solid #e9e9e9;
     background-color: #f3f3f3;
-    color: #c2c2c2;
+    color: #A6A6A6;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -58,7 +61,13 @@
 }
 
 .missionsBodyWrapper{
-    height: 300px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+}
+
+.missionsBodyScroll{
+    height: 500px;
     overflow-y: auto;
 }
 
@@ -74,7 +83,13 @@
 .contentTextBackground {
     border-top: 1px solid #e9e9e9;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 10px;    
+}
+.contentRowBackground{
+    :hover {
+        background-color: #e9e9e9;
+        cursor: pointer;
+      }
 }
 
 .ellipsis {
