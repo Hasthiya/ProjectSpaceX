@@ -5,7 +5,7 @@ import { ArrowBack } from "@material-ui/icons";
 
 import Mission from '../Mission/Mission'
 
-function AllMissions() {
+function AllMissions(props) {
 
     const [detailsVisibility, setDetailsVisibility] = useState(false);
     const [selectedMission, setSelectedMission] = useState({});
